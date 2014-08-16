@@ -10,7 +10,6 @@
 
 module.exports = (robot) ->
   robot.hear /ぬるぽ|nurupo/, (msg) ->
-    console.log(msg)
     msg.send """
 
      Λ＿Λ    ＼＼
