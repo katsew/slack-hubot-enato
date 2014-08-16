@@ -17,6 +17,11 @@ module.exports = (robot) ->
 
     robot.http(reqUrl)
       .get() (err, res, body)->
+
+        if err?
+          console.log(err)
+          msg.send err
+          return false
         response = JSON.parse(body).response
         videos = response.videos
         XVIDEOS = new RegExp('xvideos')
