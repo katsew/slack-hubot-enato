@@ -1,5 +1,5 @@
 # Description:
-#   Output Adult Video by search
+#   Output Xvideos video by search
 #
 # Commands:
 #   hubot s ero #{String}
@@ -19,7 +19,22 @@ module.exports = (robot) ->
       .get() (err, res, body)->
         response = JSON.parse(body).response
         videos = response.videos
-        video = videos[0].url
+        XVIDEOS = new RegExp('xvideos')
+        video = null
+        for _video in videos
+          if XVIDEOS.test(_video.source) is true
+            video = _video
+            break
 
-        msg.send "@#{msg.message.user.name} Sir! I found the extreamly fucking bitch!!"
-        msg.send video
+        if video?
+          msg.send "@#{msg.message.user.name} Sir! I found the extremely fucking bitch!!"
+          msg.send video.source
+          msg.send """
+            > #{video.provider}
+            > #{video.title} - #{video.duration}
+            > #{video.description}
+          """
+          msg.send video.thumbnails[0]
+        else
+          msg.send "@#{msg.message.user.name} Sorry, Sir... I couldn\'t find the bitch..."
+          
