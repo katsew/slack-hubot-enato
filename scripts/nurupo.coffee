@@ -1,6 +1,17 @@
+# Description:
+#   Output ｶﾞｯ
+#
+# Commands:
+#   ぬるぽ | nurupo
+#
+# Notes:
+#   inspired by the article below
+#   http://nanapi.co.jp/blog/2014/06/04/slack_with_hubot/
+
 module.exports = (robot) ->
-  robot.hear /ぬるぽ/, (msg) ->
-    msg.send '''
+  robot.hear /ぬるぽ|nurupo/, (msg) ->
+    console.log(msg)
+    msg.send """
 
      Λ＿Λ    ＼＼
     （ ・∀・）   | | ｶﾞｯ
@@ -8,5 +19,5 @@ module.exports = (robot) ->
      Ｙ /ノ     人
       / ）     <  >  _Λ∩
    ＿/し' ／／  Ｖ｀Д´）/
-   （＿フ彡            / ←>>1
-  '''
+   （＿フ彡            / ←>>@#{msg.message.user.name}
+   """
