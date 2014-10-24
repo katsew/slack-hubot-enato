@@ -24,14 +24,14 @@ module.exports = (robot) ->
   robot.hear /疲れた|つかれた/i, (msg) ->
     msg.reply 'お疲れ様です。'
 
-  # おばさんっていうとお、おばんさん！？って返す
-  robot.hear /おばさん/i, (msg) ->
-    msg.reply 'お、おばさん！？'
+  # おばちゃんっていうとお、おばちゃん！？って返す
+  robot.hear /おばちゃん|エナトおばちゃん/i, (msg) ->
+    msg.reply 'お、おばちゃん！？'
 
   # respondすると hubot search `something` のようにhubotに命令できる
   # http (get, post) もできたりするので組み合わせると面白いかも
-  robot.respond /search (.*)/i, (msg) ->
-    searchText = msg.match[1]
+  robot.respond /(.*) さがして|(.*) 探して/i, (msg) ->
+    searchText = msg.match[0]
     data =
       hoge: 'hoge'
       fuga: 'fuga'
@@ -43,3 +43,5 @@ module.exports = (robot) ->
         msg.send "#{res.data}"
       .post(data) (err, res, body) ->
         # 同上
+  robot.respond /いま何時？|いまなんじ？/i, (msg) ->
+    msg.reply "いまは#{new Date()}です。"
