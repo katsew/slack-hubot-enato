@@ -46,13 +46,13 @@ module.exports = (robot) ->
   robot.respond /いま何時？|いまなんじ？/i, (msg) ->
     DateEnum = ["日", "月", "火", "水", "木", "金", "土"]
     today = new Date()
-    aMonth = today.getMonth()
+    aMonth = today.getMonth() + 1
     aDate = today.getDate()
     aDay = today.getDay()
     anHour = today.getHours()
     aMinutes = today.getMinutes()
     aSecond = today.getSeconds()
 
-    theMonth = DateEnum[aMonth]
+    theDay = DateEnum[aDay]
 
-    msg.reply "いまは#{anHour}時#{aMinutes}分です。\nあ、ちなみに、今日は#{theMonth}曜日です♪"
+    msg.reply "いまは#{anHour}時#{aMinutes}分です。\nあ、ちなみに、今日は#{aMonth}月#{aDate}日#{theMonth}曜日です♪"
