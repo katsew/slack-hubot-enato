@@ -55,4 +55,4 @@ module.exports = (robot) ->
 
     theDay = DateEnum[aDay]
 
-    msg.reply "いまは#{anHour}時#{aMinutes}分です。\nあ、ちなみに、今日は#{aMonth}月#{aDate}日#{theMonth}曜日です♪"
+    msg.reply "いまは#{anHour}時#{aMinutes}分です。\nあ、ちなみに、今日は#{aMonth}月#{aDate}日#{theDay}曜日です♪"
